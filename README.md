@@ -16,6 +16,8 @@
 
 5) Submit button will validate all form cards. If there is an error, the page will scroll to first error
 
+6) If submit is successful, then an alert with the message "Submitted!" will show. You can also check the console and an array of User objects will be printed. 
+
 
 ## Learn More
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
