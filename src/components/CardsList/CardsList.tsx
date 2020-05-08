@@ -9,11 +9,7 @@ const NEW_USER = {
     name: '',
     email: '',
     gender: '',
-    react: false,
-    typescript: false,
-    graphql: false,
-    node: false,
-    other: false,
+    agreement: ''
 }
 
 interface Users extends Array<User>{}

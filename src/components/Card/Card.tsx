@@ -1,7 +1,7 @@
 import React from 'react';
 import User from '../../interfaces/user';
 import TextInput from '../common/Input/TextInput';
-import Checkboxes from '../common/Input/Checkboxes';
+import Checkbox from '../common/Input/Checkbox';
 import Radio from '../common/Input/Radio';
 import './style.css';
 
@@ -21,13 +21,18 @@ const Card: React.FC<Props> = ({
         const type = event.target.type;
         const value = type === 'checkbox' ? event.target.checked : event.target.value;
 
+        console.log(name);
+        console.log(type);
+        console.log(value);
+
         user[name] = value;        
         handleUserChange(user, idx);
     }
 
     return (
         <div className='card-outline'>
-            <button 
+            <button
+                type='button'
                 className='close-button' 
                 onClick={() => handleDelete(idx)}
             >
@@ -57,9 +62,9 @@ const Card: React.FC<Props> = ({
                     handleChange={(e) => handleChange(e)}
                 />
 
-                <Checkboxes 
-                    label='Skills'
-                    values={['react', 'typescript', 'graphql', 'node', 'other']}
+                <Checkbox
+                    name='agreement'
+                    label='I agree to the terms and conditions'
                     handleChange={handleChange}
                 />
             </div>

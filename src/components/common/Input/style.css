@@ -45,3 +45,7 @@
 .radio-label {
     margin-bottom: 0.5vh;
 }
+
+.checkbox-label {
+    font-size: 1.2vh;
+}

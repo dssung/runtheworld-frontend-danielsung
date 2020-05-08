@@ -18,6 +18,11 @@ const Radio: React.FC<Props> = ({
         setInvalid(true);
     }
 
+    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInvalid(false);
+        handleChange(event);
+    }
+
     const renderErrorMsg = () => {
         let className = invalid ? 'error-msg' : 'error-msg hidden';
         let message = 'Please choose one of the following:';
@@ -31,7 +36,7 @@ const Radio: React.FC<Props> = ({
                 <input 
                     type='radio' 
                     name={name} 
-                    onChange={handleChange} 
+                    onChange={handleRadioChange} 
                     value={value}
                     required
                     onInvalid={e => handleInvalid(e)}
