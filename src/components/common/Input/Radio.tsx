@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 
 interface Props {
@@ -14,6 +14,10 @@ const Radio: React.FC<Props> = ({
     label, name, id, value, choices, handleChange
 }) => {
     const [invalid, setInvalid] = useState(false);
+
+    useEffect(() => {
+        setInvalid(false);
+    }, [value]);
 
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInvalid(false);

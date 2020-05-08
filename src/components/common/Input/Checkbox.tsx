@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 
 interface Props {
@@ -12,6 +12,10 @@ const Checkbox: React.FC<Props> = ({
     id, label, value, handleChange
 }) => {
     const [invalid, setInvalid] = useState(false);
+
+    useEffect(() => {
+        setInvalid(false);
+    }, [value]);
 
     const handleCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInvalid(false);
