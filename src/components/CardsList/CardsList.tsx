@@ -83,7 +83,7 @@ const CardsList: React.FC = () => {
                 
                 <div className='button-container'>
                     <AddButton onClick={handleAdd}/>
-                    <SubmitButton/>
+                    <SubmitButton disabled={users.length === 0}/>
                 </div>
             </form>
         </>
