@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useReducer } from 'react';
 import User from '../../interfaces/user';
 import AddButton from './Buttons/AddButton';
 import SubmitButton from './Buttons/SubmitButton';
@@ -13,40 +13,43 @@ const NEW_USER = {
     agreement: false
 }
 
-interface Users extends Array<User>{}
+type State = User[];
+
+type Actions = 
+    | { type: 'add', }
+    | { type: 'delete', idx: Number }
+    | { type: 'change', idx: Number, user: User}
+
+const CardReducer = (state: State, action: Actions) => {
+    switch (action.type) {
+        case 'add':
+            return [...state, { ...NEW_USER }];
+        
+        case 'delete':
+            return state.filter((_, idx) => action.idx !== idx);
+
+        case 'change': 
+            return state.map((user, idx) => idx === action.idx ? action.user : user)
+        
+        default:
+            return state;
+    }
+}
 
 const CardsList: React.FC = () => {
-    const [users, setUsers] = useState<Users>([{ ...NEW_USER }]);
-    const [lengthChanged, setLengthChanged] = useState<Boolean>(false);
+    const [users, dispatch] = useReducer(CardReducer, [{ ...NEW_USER }]);
+    const [cardAdded, setCardAdded] = useState<Boolean>(false);
     
     const lastCardRef = useRef<HTMLDivElement>(null);
 
-    //If card was added/removed, then scroll
+    //If card was added then scroll
     useEffect(() => {
-        if (lengthChanged === true){
+        if (cardAdded === true){
             if (!lastCardRef.current) return;
             lastCardRef.current.scrollIntoView();
-            setLengthChanged(false);
+            setCardAdded(false);
         }
-    }, [lengthChanged, users])
-
-    const handleAdd = () => {
-        let newUser: User = {...NEW_USER}
-        setUsers([...users, newUser]);
-        setLengthChanged(true);
-    }
-
-    const handleDelete = (userIdx: number) => {
-        setUsers(users.filter((user, idx) => {
-            return userIdx !== idx;
-        }))
-    }
-
-    const handleUserChange = (changedUser: User, changeIdx: number) => {
-        setUsers(users.map((user, idx) => {
-            return idx === changeIdx ? changedUser : user;
-        }))
-    }
+    }, [cardAdded, users])
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -62,8 +65,8 @@ const CardsList: React.FC = () => {
                         <Card 
                             idx={idx} 
                             user={user}
-                            handleUserChange={handleUserChange}
-                            handleDelete={handleDelete}
+                            handleUserChange={(user) => { dispatch({ type: 'change', idx: idx, user: user })}}
+                            handleDelete={() => { dispatch({ type: 'delete', idx: idx })}}
                         />
                     </div>
                 )
@@ -71,7 +74,6 @@ const CardsList: React.FC = () => {
         } else {
             return <EmptyCard/>
         }
-        
     }
 
     return (
@@ -80,7 +82,7 @@ const CardsList: React.FC = () => {
                 {renderCards()}
                 
                 <div className='button-container'>
-                    <AddButton onClick={handleAdd}/>
+                    <AddButton onClick={() => { setCardAdded(true); dispatch({ type: 'add'})}}/>
                     <SubmitButton disabled={users.length === 0}/>
                 </div>
             </form>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 
 interface Props {
@@ -13,6 +13,10 @@ const TextInput: React.FC<Props> = ({
     label, id, type, value, handleChange 
 }) => {
     const [invalid, setInvalid] = useState(false);
+
+    useEffect(() => {
+        setInvalid(false);
+    }, [value]);
 
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInvalid(false);
@@ -45,8 +49,8 @@ const TextInput: React.FC<Props> = ({
             
             <input 
                 className={invalid ? 'invalid-text-input' : 'text-input'} 
-                name={`${Math.random()}`}
-                autoComplete="none"
+                name={`${Math.random()}`}   //Workaround to disable google autofill
+                autoComplete="none"         //Workaround to disable google autofill
                 id={id}
                 value={value}
                 type={type}
