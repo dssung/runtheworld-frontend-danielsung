@@ -20,22 +20,30 @@ interface Users extends Array<User>{}
 
 const CardsList: React.FC = () => {
     const [users, setUsers] = useState<Users>([{...NEW_USER}]);
+    const [lengthChanged, setLengthChanged] = useState<Boolean>(false);
     const lastCardRef = useRef<HTMLDivElement>(null);
 
+    //If card was added/removed, then scroll
     useEffect(() => {
         if (!lastCardRef.current) return;
-        lastCardRef.current.scrollIntoView();
-    })
+        if (lengthChanged === true){
+            lastCardRef.current.scrollIntoView();
+            setLengthChanged(false);
+        }
+        
+    }, [lengthChanged])
 
     const handleAdd = () => {
         let newUser: User = {...NEW_USER}
         setUsers([...users, newUser]);
+        setLengthChanged(true);
     }
 
     const handleDelete = (userIdx: number) => {
         setUsers(users.filter((user, idx) => {
             return userIdx !== idx;
         }))
+        setLengthChanged(true);
     }
 
     const handleUserChange = (changedUser: User, changeIdx: number) => {
