@@ -19,11 +19,6 @@ const TextInput: React.FC<Props> = ({
         handleChange(event);
     }
 
-    const onInvalid = (e: React.InvalidEvent<HTMLInputElement>) => {
-        e.preventDefault();
-        setInvalid(true)
-    }
-
     const renderErrorMsg = () => {
         let className = invalid ? 'error-msg' : 'error-msg hidden';
         let message = 'Invalid';
@@ -54,7 +49,7 @@ const TextInput: React.FC<Props> = ({
                 value={value}
                 type={type}
                 onChange={handleTextChange}
-                onInvalid={onInvalid}
+                onInvalid={() => setInvalid(true)}     
                 required
             />
 
