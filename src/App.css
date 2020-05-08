@@ -1,0 +1,15 @@
+.App {
+  height: 100vh;
+  padding: 2.5%;
+  padding-left: 35%;
+  padding-right: 35%;
+}
+
+button {
+  outline-width: 0;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}

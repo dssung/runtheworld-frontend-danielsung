@@ -1,0 +1,29 @@
+/*Card*/
+.card-outline {
+    box-shadow: 0 14px 20px 0 rgba(35,35,36,.05);
+    width: 100%;
+    margin: 2% 0;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.close-button {
+    float: right;
+    color: #cccccc;
+    font-size: 1vw;
+    font-weight: bold;
+    margin: 1vh .5vw;
+    padding: .25% 2%;
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.checkbox{
+    margin-bottom: .5vh;
+}
+

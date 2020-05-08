@@ -1,0 +1,26 @@
+.input-label {
+    margin-bottom: 1vh;
+    font-weight: 500;
+    color: #454545
+}
+.required {
+    color: red;
+}
+
+.text-input {
+    color: #4d4d4d;
+    border: solid 1px #DFE0E2;
+    border-radius: 5px;
+    padding: 0.5vh 0.5vw;
+    outline-width: 0;
+}
+
+.checkbox {
+    color: #4d4d4d
+}
+
+.radio {
+    color: #4d4d4d;
+    margin-bottom: 1vh;
+}
+
