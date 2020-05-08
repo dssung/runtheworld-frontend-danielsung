@@ -4,6 +4,7 @@ import AddButton from './Buttons/AddButton';
 import SubmitButton from './Buttons/SubmitButton';
 import Card from '../Card/Card';
 import './style.css';
+import { checkEmail } from '../../util';
 
 const NEW_USER = {
     name: '',
