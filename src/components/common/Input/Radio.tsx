@@ -30,7 +30,7 @@ const Radio: React.FC<Props> = ({
     return (
         <div className='radio'>
             <p className='input-label'>
-                {label}
+                {label} <span className='required'>*</span>
             </p>
             {renderRadios()}
         </div>

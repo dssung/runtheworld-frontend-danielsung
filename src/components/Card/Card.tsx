@@ -40,12 +40,14 @@ const Card: React.FC<Props> = ({
                     type='text'
                     label='Name'
                     name='name'
+                    value={user.name}
                     handleChange={(e) => handleChange(e)}
                 />
                 <TextInput
                     type='email'
                     label='Email'
                     name='email'
+                    value={user.email}
                     handleChange={(e) => handleChange(e)}
                 />
                 <Radio 
@@ -55,7 +57,7 @@ const Card: React.FC<Props> = ({
                     handleChange={(e) => handleChange(e)}
                 />
 
-                <p className='input-label'> Skills </p>
+                <p className='input-label'> Skills  <span className='required'>*</span> </p>
 
                 <Checkbox
                     name='react'

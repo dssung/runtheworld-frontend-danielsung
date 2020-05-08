@@ -5,22 +5,41 @@ interface Props {
     label: string;
     name: string;
     type: string;
+    value: string;
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const TextInput: React.FC<Props> = ({
-    label, name, type, handleChange 
+    label, name, type, value, handleChange 
 }) => {
+    const [invalid, setInvalid] = useState(false);
 
-    const [className, setClassName] = useState('text-input');
-
-    const handleInvalid = () => {
-        setClassName('invalid-text-input');
+    const handleInvalid = (event: React.FormEvent<HTMLInputElement>) => {
+        event.preventDefault();
+        setInvalid(true);
     }
 
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setClassName('text-input');
+        setInvalid(false);
         handleChange(event);
+    }
+
+    const renderErrorMsg = () => {
+        let className = invalid ? 'error-msg' : 'error-msg hidden';
+        let message = 'Invalid';
+
+        if (name === 'name'){
+            message = 'Name cannot be empty'    
+        }
+
+        if (name === 'email'){
+            message = 'Email is invalid';
+            
+            if (!value)
+                message = 'Email cannot be empty'
+        }
+        
+        return <p className={className}>{message}</p>
     }
 
     return (
@@ -30,13 +49,16 @@ const TextInput: React.FC<Props> = ({
             </p>
             
             <input 
-                className={className} 
+                className={invalid ? 'invalid-text-input' : 'text-input'} 
                 name={name} 
                 type={type}
                 onChange={handleTextChange}
-                onInvalid={handleInvalid}
+                onInvalid={e => handleInvalid(e)}
+                formNoValidate={true}
                 required
             />
+
+            {renderErrorMsg()}
         </>
     );
 }
