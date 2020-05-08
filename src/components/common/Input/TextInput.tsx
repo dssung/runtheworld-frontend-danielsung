@@ -45,11 +45,13 @@ const TextInput: React.FC<Props> = ({
             
             <input 
                 className={invalid ? 'invalid-text-input' : 'text-input'} 
+                name={`${Math.random()}`}
+                autoComplete="none"
                 id={id}
                 value={value}
                 type={type}
                 onChange={handleTextChange}
-                onInvalid={() => setInvalid(true)}     
+                onInvalid={() => setInvalid(true)}
                 required
             />
 
