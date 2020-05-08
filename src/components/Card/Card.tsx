@@ -17,11 +17,11 @@ const Card: React.FC<Props> = ({
 }) => {
     //Set new values on change then call handleUserChange
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const name = event.target.name;
+        const id = event.target.id;
         const type = event.target.type;
         const value = type === 'checkbox' ? event.target.checked : event.target.value;
 
-        user[name] = value;        
+        user[id] = value;
         handleUserChange(user, idx);
     }
 
@@ -39,28 +39,29 @@ const Card: React.FC<Props> = ({
                 <TextInput 
                     type='text'
                     label='Name'
-                    name='name'
+                    id='name'
                     value={user.name}
-                    handleChange={(e) => handleChange(e)}
+                    handleChange={handleChange}
                 />
                 <TextInput
                     type='email'
                     label='Email'
-                    name='email'
+                    id='email'
                     value={user.email}
-                    handleChange={(e) => handleChange(e)}
+                    handleChange={handleChange}
                 />
                 <Radio 
                     label='Gender'
-                    name='gender'
-                    value={user.gender} 
+                    id='gender'
+                    name={`gender_${idx}`}
+                    value={user.gender}
                     choices={['male', 'female', 'other']} 
-                    handleChange={(e) => handleChange(e)}
+                    handleChange={handleChange}
                 />
                 <Checkbox
-                    name='agreement'
-                    value={user.agreement}
                     label='I agree to the terms and conditions'
+                    id='agreement'
+                    value={user.agreement}
                     handleChange={handleChange}
                 />
             </div>

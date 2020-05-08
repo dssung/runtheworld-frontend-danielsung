@@ -3,14 +3,14 @@ import './style.css';
 
 interface Props {
     label: string;
-    name: string;
+    id: string;
     type: string;
     value: string;
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const TextInput: React.FC<Props> = ({
-    label, name, type, value, handleChange 
+    label, id, type, value, handleChange 
 }) => {
     const [invalid, setInvalid] = useState(false);
 
@@ -23,11 +23,11 @@ const TextInput: React.FC<Props> = ({
         let className = invalid ? 'error-msg' : 'error-msg hidden';
         let message = 'Invalid';
 
-        if (name === 'name'){
+        if (id === 'name'){
             message = 'Name cannot be empty'    
         }
 
-        if (name === 'email'){
+        if (id === 'email'){
             message = 'Email is invalid';
             
             if (!value)
@@ -45,8 +45,8 @@ const TextInput: React.FC<Props> = ({
             
             <input 
                 className={invalid ? 'invalid-text-input' : 'text-input'} 
-                name={name}
-                value={value} 
+                id={id}
+                value={value}
                 type={type}
                 onChange={handleTextChange}
                 onInvalid={() => setInvalid(true)}

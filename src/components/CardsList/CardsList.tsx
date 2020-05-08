@@ -28,7 +28,7 @@ const CardsList: React.FC = () => {
             lastCardRef.current.scrollIntoView();
             setLengthChanged(false);
         }
-    }, [lengthChanged])
+    }, [lengthChanged, users])
 
     const handleAdd = () => {
         let newUser: User = {...NEW_USER}
@@ -51,6 +51,7 @@ const CardsList: React.FC = () => {
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         console.log(users);
         alert('Submitted!');
     }
