@@ -3,6 +3,7 @@ import User from '../../interfaces/user';
 import AddButton from './Buttons/AddButton';
 import SubmitButton from './Buttons/SubmitButton';
 import Card from '../Card/Card';
+import EmptyCard from '../Card/EmptyCard';
 import './style.css';
 
 const NEW_USER = {
@@ -39,6 +40,7 @@ const CardsList: React.FC = () => {
         setUsers(users.filter((user, idx) => {
             return userIdx !== idx;
         }))
+        
         setLengthChanged(true);
     }
 
@@ -54,18 +56,24 @@ const CardsList: React.FC = () => {
     }
 
     const renderCards = () => {
-        return users.map((user, idx) => {
-            return (
-                <div className='card-container' ref={idx === users.length - 1 ? lastCardRef : null}>
-                    <Card 
-                        idx={idx} 
-                        user={user}
-                        handleUserChange={handleUserChange}
-                        handleDelete={handleDelete}
-                    />
-                </div>
-            )
-        })
+
+        if (users.length){
+            return users.map((user, idx) => {
+                return (
+                    <div className='card-container' ref={idx === users.length - 1 ? lastCardRef : null}>
+                        <Card 
+                            idx={idx} 
+                            user={user}
+                            handleUserChange={handleUserChange}
+                            handleDelete={handleDelete}
+                        />
+                    </div>
+                )
+            })
+        } else {
+            return <EmptyCard/>
+        }
+        
     }
 
     return (

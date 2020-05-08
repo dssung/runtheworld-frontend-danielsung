@@ -2,13 +2,17 @@
     margin-top: 2%;
     margin-bottom: 20%;
     font-size: 1vw;
+    font-weight: 600;
     text-align: center;
-    padding: 1% 2%;
+    padding: 1% 1.7%;
     border-radius: 5px;
     color: white;
 }
 
 .button#add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     background-color: #00FFC5;
 }

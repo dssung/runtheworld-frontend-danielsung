@@ -15,7 +15,7 @@ const AddButton: React.FC<Props> = ({
             className='button'
             onClick={() => onClick()}
         >
-            +
+            <i className="fa fa-plus"></i>
         </button>
     );
 }
