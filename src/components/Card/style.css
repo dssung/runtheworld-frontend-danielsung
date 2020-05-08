@@ -1,10 +1,10 @@
 /*Card*/
-.card-outline {
-    box-shadow: 0 14px 20px 0 rgba(35,35,36,.05);
+.card{
     width: 100%;
     margin: 2% 0;
     background-color: white;
     border-radius: 10px;
+    box-shadow: 0 14px 20px 0 rgba(35,35,36,.05);
 }
 
 .close-button {
@@ -22,8 +22,3 @@
     padding-left: 5%;
     padding-right: 5%;
 }
-
-.checkbox{
-    margin-bottom: .5vh;
-}
-

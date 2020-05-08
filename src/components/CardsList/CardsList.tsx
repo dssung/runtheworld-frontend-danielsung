@@ -15,8 +15,9 @@ const NEW_USER = {
 interface Users extends Array<User>{}
 
 const CardsList: React.FC = () => {
-    const [users, setUsers] = useState<Users>([{...NEW_USER}]);
+    const [users, setUsers] = useState<Users>([{ ...NEW_USER }]);
     const [lengthChanged, setLengthChanged] = useState<Boolean>(false);
+    
     const lastCardRef = useRef<HTMLDivElement>(null);
 
     //If card was added/removed, then scroll
@@ -48,7 +49,6 @@ const CardsList: React.FC = () => {
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
         console.log(users);
         alert('Submitted!');
     }

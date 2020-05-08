@@ -12,19 +12,14 @@ const Checkbox: React.FC<Props> = ({
 }) => {
     const [invalid, setInvalid] = useState(false);
 
-    const handleInvalid = (event: React.FormEvent<HTMLInputElement>) => {
-        // event.preventDefault();
-        setInvalid(true);
+    const handleCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInvalid(false);
+        handleChange(event);
     }
 
     const renderErrorMsg = () => {
         let className = invalid ? 'error-msg' : 'error-msg hidden';
         return <p className={className}>You must agree to the terms and conditions</p>
-    }
-
-    const handleCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInvalid(false);
-        handleChange(event);
     }
 
     return (
@@ -33,11 +28,12 @@ const Checkbox: React.FC<Props> = ({
                 type="checkbox" 
                 name={name}
                 onChange={handleCheckChange}
+                onInvalid={() => setInvalid(true)}
                 required
-                onInvalid={e => handleInvalid(e)}
             />
+
             <label className='checkbox-label'> 
-                {label} 
+                {label} <span className='required'>*</span>
             </label>
 
             {renderErrorMsg()}

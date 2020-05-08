@@ -15,22 +15,18 @@ interface Props {
 const Card: React.FC<Props> = ({
     idx, user, handleDelete, handleUserChange
 }) => {
-
+    //Set new values on change then call handleUserChange
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const name = event.target.name;
         const type = event.target.type;
         const value = type === 'checkbox' ? event.target.checked : event.target.value;
-
-        console.log(name);
-        console.log(type);
-        console.log(value);
 
         user[name] = value;        
         handleUserChange(user, idx);
     }
 
     return (
-        <div className='card-outline'>
+        <div className='card'>
             <button
                 type='button'
                 className='close-button' 
@@ -40,7 +36,6 @@ const Card: React.FC<Props> = ({
             </button>
             
             <div className='card-body'>
-                
                 <TextInput 
                     type='text'
                     label='Name'
@@ -61,7 +56,6 @@ const Card: React.FC<Props> = ({
                     values={['male', 'female', 'other']} 
                     handleChange={(e) => handleChange(e)}
                 />
-
                 <Checkbox
                     name='agreement'
                     label='I agree to the terms and conditions'

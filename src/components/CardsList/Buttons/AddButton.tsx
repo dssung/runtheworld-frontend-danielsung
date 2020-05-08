@@ -8,7 +8,6 @@ interface Props {
 const AddButton: React.FC<Props> = ({
     onClick
 }) => {
-
     return (
         <button 
             id='add'

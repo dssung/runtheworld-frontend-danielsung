@@ -13,11 +13,6 @@ const Radio: React.FC<Props> = ({
 }) => {
     const [invalid, setInvalid] = useState(false);
 
-    const handleInvalid = (event: React.FormEvent<HTMLInputElement>) => {
-        // event.preventDefault();
-        setInvalid(true);
-    }
-
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInvalid(false);
         handleChange(event);
@@ -25,9 +20,7 @@ const Radio: React.FC<Props> = ({
 
     const renderErrorMsg = () => {
         let className = invalid ? 'error-msg' : 'error-msg hidden';
-        let message = 'Please choose one of the following:';
-        
-        return <p className={className}>{message}</p>
+        return <p className={className}>Please choose one of the above</p>
     }
     
     const renderRadios = () => {
@@ -35,13 +28,14 @@ const Radio: React.FC<Props> = ({
             <>
                 <input 
                     type='radio' 
+                    className='radio-btn'
                     name={name} 
-                    onChange={handleRadioChange} 
                     value={value}
+                    onChange={handleRadioChange} 
+                    onInvalid={() => setInvalid(true)}
                     required
-                    onInvalid={e => handleInvalid(e)}
                 />
-                <label> {value} </label>
+                <label className='radio-btn-label'>{value}</label>
             </>
         )
     }
@@ -52,8 +46,8 @@ const Radio: React.FC<Props> = ({
                 {label} <span className='required'>*</span>
             </p>
             
-            {renderErrorMsg()}
             {renderRadios()}
+            {renderErrorMsg()}
         </div>
     );
 }

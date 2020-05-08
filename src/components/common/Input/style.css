@@ -1,3 +1,4 @@
+/*common*/
 .input-label {
     margin-bottom: 1vh;
     font-weight: 500;
@@ -7,6 +8,18 @@
     color: red;
 }
 
+.error-msg {
+    color: #dc3545;
+    font-size: 1.5vh;
+    margin: 0;
+    margin-top: 0.5vh;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/*TextInput*/
 .text-input {
     color: #4d4d4d;
     border: solid 1px #DFE0E2;
@@ -22,28 +35,27 @@
     outline-width: 0;
 }
 
-.error-msg {
-    color: #dc3545;
-    font-size: 1.5vh;
-    margin: 0;
-    margin-top: 0.5vh;
-}
-
-.hidden {
-    visibility: hidden;
-}
-
-.checkbox {
-    color: #4d4d4d
-}
-
+/*Radio*/
 .radio {
     color: #4d4d4d;
-    margin-bottom: 4vh;
+    margin-bottom: 1vh;
+}
+
+.radio-btn {
+    margin-right: 0.25vw;
+}
+
+.radio-btn-label {
+    margin-right: 0.5vw;
 }
 
 .radio-label {
-    margin-bottom: 0.5vh;
+    margin-bottom: 1vh;
+}
+
+/*Checkbox*/
+.checkbox {
+    color: #4d4d4d
 }
 
 .checkbox-label {

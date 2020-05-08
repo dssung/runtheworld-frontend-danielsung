@@ -14,11 +14,6 @@ const TextInput: React.FC<Props> = ({
 }) => {
     const [invalid, setInvalid] = useState(false);
 
-    const handleInvalid = (event: React.FormEvent<HTMLInputElement>) => {
-        // event.preventDefault();
-        setInvalid(true);
-    }
-
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInvalid(false);
         handleChange(event);
@@ -53,8 +48,7 @@ const TextInput: React.FC<Props> = ({
                 name={name} 
                 type={type}
                 onChange={handleTextChange}
-                onInvalid={e => handleInvalid(e)}
-                formNoValidate={true}
+                onInvalid={() => setInvalid(true)}
                 required
             />
 

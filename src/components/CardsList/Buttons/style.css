@@ -17,9 +17,3 @@
     width: 25%;
     background-color: #0075A2;
 }
-
-.button-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
