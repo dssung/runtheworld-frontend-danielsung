@@ -61,8 +61,13 @@ const CardsList: React.FC = () => {
         if (users.length){
             return users.map((user, idx) => {
                 return (
-                    <div className='card-container' ref={idx === users.length - 1 ? lastCardRef : null}>
-                        <Card 
+                    //Set ref to last card on the list
+                    <div 
+                        key={`card_${idx}`} 
+                        className='card-container' 
+                        ref={idx === users.length - 1 ? lastCardRef : null}
+                    >
+                        <Card  
                             idx={idx} 
                             user={user}
                             handleUserChange={(user) => { dispatch({ type: 'change', idx: idx, user: user })}}

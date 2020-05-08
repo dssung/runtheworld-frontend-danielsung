@@ -48,15 +48,15 @@ const TextInput: React.FC<Props> = ({
             </p>
             
             <input 
-                className={invalid ? 'invalid-text-input' : 'text-input'} 
-                name={`${Math.random()}`}   //Workaround to disable google autofill
-                autoComplete="none"         //Workaround to disable google autofill
                 id={id}
                 value={value}
                 type={type}
                 onChange={handleTextChange}
                 onInvalid={() => setInvalid(true)}
+                className={invalid ? 'invalid-text-input' : 'text-input'} 
                 required
+                name={`${Math.random()}`}   // Workaround to disable google autofill
+                autoComplete="none"         // Workaround to disable google autofill
             />
 
             {renderErrorMsg()}

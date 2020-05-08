@@ -26,8 +26,8 @@ const Radio: React.FC<Props> = ({
     }
     
     const renderRadios = () => {
-        return choices.map(choice =>
-            <>
+        return choices.map((choice, idx) =>
+            <div key={`radio_${idx}`}>
                 <input 
                     type='radio' 
                     className='radio-btn'
@@ -40,7 +40,7 @@ const Radio: React.FC<Props> = ({
                     required
                 />
                 <label className='radio-btn-label'>{choice}</label>
-            </>
+            </div>
         )
     }
     
