@@ -15,7 +15,7 @@ const TextInput: React.FC<Props> = ({
     const [invalid, setInvalid] = useState(false);
 
     const handleInvalid = (event: React.FormEvent<HTMLInputElement>) => {
-        event.preventDefault();
+        // event.preventDefault();
         setInvalid(true);
     }
 

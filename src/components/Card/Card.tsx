@@ -1,7 +1,7 @@
 import React from 'react';
 import User from '../../interfaces/user';
 import TextInput from '../common/Input/TextInput';
-import Checkbox from '../common/Input/Checkbox';
+import Checkboxes from '../common/Input/Checkboxes';
 import Radio from '../common/Input/Radio';
 import './style.css';
 
@@ -57,31 +57,10 @@ const Card: React.FC<Props> = ({
                     handleChange={(e) => handleChange(e)}
                 />
 
-                <p className='input-label'> Skills  <span className='required'>*</span> </p>
-
-                <Checkbox
-                    name='react'
-                    handleChange={(e) => handleChange(e)}
-                />
-
-                <Checkbox
-                    name='typescript'
-                    handleChange={(e) => handleChange(e)}
-                />
-
-                <Checkbox
-                    name='graphql'
-                    handleChange={(e) => handleChange(e)}
-                />
-
-                <Checkbox
-                    name='node'
-                    handleChange={(e) => handleChange(e)}
-                />
-                
-                <Checkbox
-                    name='other'
-                    handleChange={(e) => handleChange(e)}
+                <Checkboxes 
+                    label='Skills'
+                    values={['react', 'typescript', 'graphql', 'node', 'other']}
+                    handleChange={handleChange}
                 />
             </div>
         </div>
