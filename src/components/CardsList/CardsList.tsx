@@ -40,8 +40,6 @@ const CardsList: React.FC = () => {
         setUsers(users.filter((user, idx) => {
             return userIdx !== idx;
         }))
-        
-        setLengthChanged(true);
     }
 
     const handleUserChange = (changedUser: User, changeIdx: number) => {

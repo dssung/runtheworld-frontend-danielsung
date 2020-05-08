@@ -18,6 +18,11 @@ const Checkbox: React.FC<Props> = ({
         handleChange(event);
     }
 
+    const onInvalid = (e: React.InvalidEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        setInvalid(true)
+    }
+
     const renderErrorMsg = () => {
         let className = invalid ? 'error-msg' : 'error-msg hidden';
         return <p className={className}>You must agree to the terms and conditions</p>
@@ -30,7 +35,7 @@ const Checkbox: React.FC<Props> = ({
                 id={id}
                 checked={value}
                 onChange={handleCheckChange}
-                onInvalid={() => setInvalid(true)}
+                onInvalid={onInvalid}
                 required
             />
 
