@@ -4,11 +4,12 @@ import './style.css';
 interface Props {
     name: string;
     label: string;
+    value: boolean;
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Checkbox: React.FC<Props> = ({
-    name, label, handleChange
+    name, label, value, handleChange
 }) => {
     const [invalid, setInvalid] = useState(false);
 
@@ -27,6 +28,7 @@ const Checkbox: React.FC<Props> = ({
             <input 
                 type="checkbox" 
                 name={name}
+                checked={value}
                 onChange={handleCheckChange}
                 onInvalid={() => setInvalid(true)}
                 required

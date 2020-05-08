@@ -52,12 +52,14 @@ const Card: React.FC<Props> = ({
                 />
                 <Radio 
                     label='Gender'
-                    name='gender' 
-                    values={['male', 'female', 'other']} 
+                    name='gender'
+                    value={user.gender} 
+                    choices={['male', 'female', 'other']} 
                     handleChange={(e) => handleChange(e)}
                 />
                 <Checkbox
                     name='agreement'
+                    value={user.agreement}
                     label='I agree to the terms and conditions'
                     handleChange={handleChange}
                 />

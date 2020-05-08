@@ -10,7 +10,7 @@ const NEW_USER = {
     name: '',
     email: '',
     gender: '',
-    agreement: ''
+    agreement: false
 }
 
 interface Users extends Array<User>{}
@@ -56,7 +56,6 @@ const CardsList: React.FC = () => {
     }
 
     const renderCards = () => {
-
         if (users.length){
             return users.map((user, idx) => {
                 return (

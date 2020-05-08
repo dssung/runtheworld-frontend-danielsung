@@ -45,7 +45,8 @@ const TextInput: React.FC<Props> = ({
             
             <input 
                 className={invalid ? 'invalid-text-input' : 'text-input'} 
-                name={name} 
+                name={name}
+                value={value} 
                 type={type}
                 onChange={handleTextChange}
                 onInvalid={() => setInvalid(true)}

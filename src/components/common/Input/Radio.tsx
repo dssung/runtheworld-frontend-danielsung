@@ -4,12 +4,13 @@ import './style.css';
 interface Props {
     label: string;
     name: string;
-    values: Array<string>;
+    value: string;
+    choices: Array<string>;
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Radio: React.FC<Props> = ({
-    label, name, values, handleChange
+    label, name, value, choices, handleChange
 }) => {
     const [invalid, setInvalid] = useState(false);
 
@@ -24,18 +25,18 @@ const Radio: React.FC<Props> = ({
     }
     
     const renderRadios = () => {
-        return values.map(value => 
+        return choices.map(choice =>
             <>
                 <input 
                     type='radio' 
                     className='radio-btn'
                     name={name} 
-                    value={value}
+                    value={choice}
                     onChange={handleRadioChange} 
                     onInvalid={() => setInvalid(true)}
                     required
                 />
-                <label className='radio-btn-label'>{value}</label>
+                <label className='radio-btn-label'>{choice}</label>
             </>
         )
     }
