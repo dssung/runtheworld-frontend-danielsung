@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
 interface Props {
@@ -11,6 +11,18 @@ interface Props {
 const TextInput: React.FC<Props> = ({
     label, name, type, handleChange 
 }) => {
+
+    const [className, setClassName] = useState('text-input');
+
+    const handleInvalid = () => {
+        setClassName('invalid-text-input');
+    }
+
+    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setClassName('text-input');
+        handleChange(event);
+    }
+
     return (
         <>
             <p className='input-label'>
@@ -18,10 +30,12 @@ const TextInput: React.FC<Props> = ({
             </p>
             
             <input 
-                className='text-input' 
+                className={className} 
                 name={name} 
-                type={type} 
-                onChange={handleChange}
+                type={type}
+                onChange={handleTextChange}
+                onInvalid={handleInvalid}
+                required
             />
         </>
     );

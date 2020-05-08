@@ -20,6 +20,7 @@ const Radio: React.FC<Props> = ({
                     name={name} 
                     onChange={handleChange} 
                     value={value}
+                    required
                 />
                 <label> {value} </label>
             </>

@@ -12,6 +12,7 @@ const AddButton: React.FC<Props> = ({
     return (
         <button 
             id='add'
+            type='button'
             className='button'
             onClick={() => onClick()}
         >

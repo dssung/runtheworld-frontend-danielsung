@@ -4,7 +4,6 @@ import AddButton from './Buttons/AddButton';
 import SubmitButton from './Buttons/SubmitButton';
 import Card from '../Card/Card';
 import './style.css';
-import { checkEmail } from '../../util';
 
 const NEW_USER = {
     name: '',
@@ -26,12 +25,11 @@ const CardsList: React.FC = () => {
 
     //If card was added/removed, then scroll
     useEffect(() => {
-        if (!lastCardRef.current) return;
         if (lengthChanged === true){
+            if (!lastCardRef.current) return;
             lastCardRef.current.scrollIntoView();
             setLengthChanged(false);
         }
-        
     }, [lengthChanged])
 
     const handleAdd = () => {
@@ -53,8 +51,10 @@ const CardsList: React.FC = () => {
         }))
     }
 
-    const handleSubmit = () => {
-        
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log(users);
+        alert('Submitted!');
     }
 
     const renderCards = () => {
@@ -73,14 +73,16 @@ const CardsList: React.FC = () => {
     }
 
     return (
-        <div className="list">
-            {renderCards()}
-            
-            <div className='button-container'>
-                <AddButton onClick={handleAdd}/>
-                <SubmitButton onClick={handleSubmit}/>
-            </div>
-        </div>
+        <>
+            <form className='form-list' onSubmit={handleSubmit}>
+                {renderCards()}
+                
+                <div className='button-container'>
+                    <AddButton onClick={handleAdd}/>
+                    <SubmitButton/>
+                </div>
+            </form>
+        </>
     );
 }
 
